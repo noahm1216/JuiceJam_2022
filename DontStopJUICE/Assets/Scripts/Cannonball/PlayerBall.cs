@@ -54,11 +54,13 @@ public class PlayerBall : MonoBehaviour
             if (Input.GetKey("space"))
             {
                 print("launch");
-                transform.Translate(currentCannon.forward * 1.5f, Space.World);
+                transform.position = currentCannon.GetChild(0).position;
                 rbBall.isKinematic = false;
-                //rbBall.AddForce(currentCannon.forward * powerCannon);
-                rbBall.AddRelativeForce(currentCannon.forward * powerCannon);
+                rbBall.AddForce(currentCannon.forward * powerCannon);
+                //rbBall.AddRelativeForce(currentCannon.forward * powerCannon);
                 inCannon = false;
+                currentCannon.parent.tag = "Cannon";
+                currentCannon = null;
             }
         }
 
