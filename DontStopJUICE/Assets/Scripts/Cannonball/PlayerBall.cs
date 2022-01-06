@@ -43,20 +43,21 @@ public class PlayerBall : MonoBehaviour
             //cannon rotations            
             if (Input.GetKey("d"))
             {
-                currentCannon.transform.Rotate(0, -speedRotate * Time.deltaTime, 0);
+                currentCannon.transform.Rotate(speedRotate * Time.deltaTime, 0, 0);
             }
             if (Input.GetKey("a"))
             {
-                currentCannon.transform.Rotate(0, speedRotate * Time.deltaTime, 0);
+                currentCannon.transform.Rotate(-speedRotate * Time.deltaTime, 0, 0);
             }
 
             //cannon shoot
             if (Input.GetKey("space"))
             {
                 print("launch");
-                transform.Translate(currentCannon.forward * 25 * Time.deltaTime, Space.Self);
+                transform.Translate(currentCannon.forward * 1.5f, Space.World);
                 rbBall.isKinematic = false;
-                rbBall.AddForce(currentCannon.up * powerCannon);
+                //rbBall.AddForce(currentCannon.forward * powerCannon);
+                rbBall.AddRelativeForce(currentCannon.forward * powerCannon);
                 inCannon = false;
             }
         }
