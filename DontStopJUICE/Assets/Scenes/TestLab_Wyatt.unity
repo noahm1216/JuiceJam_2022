@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b616e76b82dbbd4d8e38799d44097b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotor: {fileID: 1976691928}
+  rotor: {fileID: 1976691930}
   checkInterval: 0.05
   minMoveAmount: 0.1
 --- !u!1 &1580486136
@@ -773,6 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976691929}
+  - component: {fileID: 1976691930}
   m_Layer: 0
   m_Name: Rotor
   m_TagString: Untagged
@@ -797,3 +798,26 @@ Transform:
   m_Father: {fileID: 183777136}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976691930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976691928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b894088094331946b6a2d466cad755f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  r: {x: 5, y: 0, z: 0}
+  bladeHeight: 0.2
+  m: 3
+  I: 1
+  a: {x: 0, y: 0, z: 0}
+  w: {x: 0, y: 0, z: 0}
+  theta: {x: 0, y: 0, z: 0}
+  airResistanceForce: {x: 0, y: 0, z: 0}
+  airDensity: 1.225
+  dragCoefficient: 0.2
+  crossSectionalSurfaceArea: 0

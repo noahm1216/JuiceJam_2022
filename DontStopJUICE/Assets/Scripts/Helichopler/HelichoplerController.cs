@@ -4,11 +4,10 @@ using UnityEngine;
 public class HelichoplerController : MonoBehaviour {
 	enum MouseDir { LEFT, RIGHT, UP, DOWN }
 
-    [SerializeField] GameObject rotor;
+    [SerializeField] OverheadRotor rotor;
 
 	Vector3 prevMousePos;
 	Vector3 mouseVelocity;
-
 
 	bool firstFrame = true;
 
@@ -28,8 +27,6 @@ public class HelichoplerController : MonoBehaviour {
 		MouseDir.LEFT,
 		MouseDir.UP,
 	};
-
-	// detect when mouse move dir goes from right->down->left->up cycle
 
 	void Update() {
 		Vector3 mousePos = Input.mousePosition;
@@ -66,7 +63,11 @@ public class HelichoplerController : MonoBehaviour {
 					if (previousDirections.Count == 0) {
 						previousDirections.Insert(0, currentDirection);
 					} else {
-						if (currentDirection != previousDirections[0]) circlesInARow++;
+						if (currentDirection != previousDirections[0]) {
+							circlesInARow++;
+
+							rotor.AddForce(new Vector3(0f, 0f, circlesInARow * circlesInARow));
+						}
 
 						if (currentDirection != previousDirections[0]) {
 							previousDirections.Insert(0, currentDirection);
@@ -124,6 +125,5 @@ public class HelichoplerController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-        rotor.transform.Rotate(transform.up, 1f);
     }
 }
