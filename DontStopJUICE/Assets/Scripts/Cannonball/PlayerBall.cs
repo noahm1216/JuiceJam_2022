@@ -54,8 +54,9 @@ public class PlayerBall : MonoBehaviour
             if (Input.GetKey("space"))
             {
                 print("launch");
+                transform.Translate(currentCannon.forward * 25 * Time.deltaTime, Space.Self);
                 rbBall.isKinematic = false;
-                rbBall.AddForce(currentCannon.forward * powerCannon);
+                rbBall.AddForce(currentCannon.up * powerCannon);
                 inCannon = false;
             }
         }
