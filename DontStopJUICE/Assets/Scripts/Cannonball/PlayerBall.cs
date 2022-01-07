@@ -13,6 +13,8 @@ public class PlayerBall : MonoBehaviour
     public bool inCannon;
     public float powerCannon;
 
+    public GameObject camView, camScore;
+
     // Update is called once per frame
     void Update()
     {
@@ -80,6 +82,26 @@ public class PlayerBall : MonoBehaviour
         }
         
     }//end of collision enter
+
+    //enter
+    private void OnTriggerEnter(Collider trig)
+    {
+        if(trig.tag == "ChangeCamera")
+        {
+            camView.SetActive(false);
+            camScore.SetActive(true);
+        }
+    }//trigger enter
+
+    //exit
+    private void OnTriggerExit(Collider trig)
+    {
+        if (trig.tag == "ChangeCamera")
+        {
+            camView.SetActive(true);
+            camScore.SetActive(false);
+        }
+    }//trigger exit
 
 
 }//end of playerball script
