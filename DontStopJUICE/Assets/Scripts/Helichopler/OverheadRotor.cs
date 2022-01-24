@@ -9,9 +9,9 @@ public class OverheadRotor : MonoBehaviour {
 	// I_of_rotor = 4*m*r^2 / 3 = 1
 	[SerializeField] float I = 1f;
 
-	[SerializeField] Vector3 a;
-	[SerializeField] Vector3 w;
-	[SerializeField] Vector3 theta;
+	[SerializeField] Vector3 alpha;
+	[SerializeField] Vector3 omega;
+	[SerializeField] Vector3 delTheta;
 
 	// forces, with respect to the edge of a rotor at point r
 	List<Vector3> forces = new List<Vector3>();
@@ -28,25 +28,26 @@ public class OverheadRotor : MonoBehaviour {
 		//airResistanceForce = 0.5f * airDensity * dragCoefficient * crossSectionalSurfaceArea * velocitySquared;
 		//print("air " + airResistanceForce);
 		//forces.Add(airResistanceForce);
-		airResistanceForce = 0.5f * airDensity * dragCoefficient * crossSectionalSurfaceArea * new Vector3(0f, 0f, -1f) * w.magnitude;
+
+		airResistanceForce = 0.5f * airDensity * dragCoefficient * crossSectionalSurfaceArea * new Vector3(0f, 0f, -1f) * omega.magnitude * omega.magnitude;
 		print(airResistanceForce);
 		forces.Add(airResistanceForce);
 
 		// a = sum(T) = sum((r x F) / I) = sum(r x F)
-		a = Vector3.zero;
+		alpha = Vector3.zero;
 		for (int i=0; i<forces.Count; i++) {
-			a += Vector3.Cross(r, forces[i]) / I;
+			alpha += Vector3.Cross(r, forces[i]) / I;
 	 	} forces.Clear();
 
-		print("acc: " + a);
+		print("acc: " + alpha);
 
 		// w = a * dt
-		w += a * Time.fixedDeltaTime;
+		omega += alpha * Time.fixedDeltaTime;
 
 		// theta = w * dt
-		theta = w * Time.fixedDeltaTime;
+		delTheta = omega * Time.fixedDeltaTime;
 
-		transform.Rotate(theta);
+		transform.Rotate(delTheta);
 	}
 
 	public void AddForce(Vector3 force) {

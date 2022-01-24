@@ -811,13 +811,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   r: {x: 5, y: 0, z: 0}
-  bladeHeight: 0.2
+  bladeHeight: 0.002
   m: 3
   I: 1
-  a: {x: 0, y: 0, z: 0}
-  w: {x: 0, y: 0, z: 0}
-  theta: {x: 0, y: 0, z: 0}
-  airResistanceForce: {x: 0, y: 0, z: 0}
+  alpha: {x: 0, y: 34.363598, z: 0}
+  omega: {x: 0, y: -236.1752, z: 0}
+  delTheta: {x: 0, y: -4.723504, z: 0}
+  airResistanceForce: {x: 0, y: 0, z: -6.8727193}
   airDensity: 1.225
-  dragCoefficient: 0.2
-  crossSectionalSurfaceArea: 0
+  dragCoefficient: 0.02
+  crossSectionalSurfaceArea: 0.010000001
